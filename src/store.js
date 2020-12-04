@@ -3,6 +3,7 @@ import { connectRouter, routerMiddleware } from 'connected-react-router'
 import thunk from 'redux-thunk'
 import createHistory from 'history/createBrowserHistory'
 import rootReducer from './modules'
+import BookReducer from './components/Book/BookSlice';
 
 export const history = createHistory()
 
@@ -26,5 +27,10 @@ const composedEnhancers = compose(
 export default createStore(
   connectRouter(history)(rootReducer),
   initialState,
-  composedEnhancers
+  composedEnhancers,
+  {
+    reducer: {
+      books: BookReducer
+    },
+  }
 )

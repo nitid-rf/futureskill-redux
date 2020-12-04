@@ -1,22 +1,27 @@
 import React from 'react'
-import { render } from 'react-dom'
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
-import store, { history } from './store'
+import store from './store'
+import { history } from './store'
 import App from './containers/app'
 
 import 'sanitize.css/sanitize.css'
 import './index.css'
 
-const target = document.querySelector('#root')
+// import { createStore } from 'redux';
 
-render(
+// import BookReducer from './BookReducer';
+
+// const store = createStore(BookReducer); 
+// const target = document.querySelector('#root')
+
+ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <div>
-        <App />
-      </div>
+      <App />
     </ConnectedRouter>
   </Provider>,
-  target
+  //  target
+  document.querySelector('#root')
 )
